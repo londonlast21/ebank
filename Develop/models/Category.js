@@ -10,18 +10,15 @@ Category.init(
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
+      primaryKey: true
     },
-    category: {
+    category_name: {
       type: DataTypes.STRING,
       allowNull: false,
-      // can only be one of each
-      unique: true,
-      
-
-
-    }
+    },
+  
+    
     
   },
   {
