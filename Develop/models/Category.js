@@ -13,21 +13,16 @@ Category.init(
       primaryKey: true,
       autoIncrement: true
     },
-    // column 2: name of db
-    databaseName: {
+    category: {
       type: DataTypes.STRING,
-      allowNull: false
-    },
-    // column 3 : mySql username
-    mySqlUsername: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    // column 4 my sql password
-    mySqlPassword: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
+      allowNull: false,
+      // can only be one of each
+      unique: true,
+      
+
+
+    }
+    
   },
   {
     sequelize,
