@@ -11,11 +11,11 @@ router.get('/', (req, res) => {
     attributes: ['id','product_name', 'price', 'stock'],
     include: [{
       model: Category,
-      attributes: ['id']
+      attributes: 'id'
     },
     {
       model: Tag,
-      attributes: ['id']
+      attributes: 'id'
     }
     ]
   }).then(productData => res.json(productData))
