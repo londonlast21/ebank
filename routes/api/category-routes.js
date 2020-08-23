@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
     include: [
       {
         model: Product,
-        attributes: ['product_name']
+        attributes: ['id', 'product_name']
       }
 
     ]
@@ -35,7 +35,7 @@ router.get('/:id', (req, res) => {
     attributes: ['id', 'category_name'],
     include: [{
       model: Product,
-      attributes: ['product_name']
+      attributes: ['id', 'product_name']
     }
   ]
   })
@@ -69,7 +69,7 @@ router.put('/:id', (req, res) => {
   // update a category by its `id` value
   Category.update(
     {
-      title: req.body.title
+      title: req.body.category_name
     },
     {
       where: {
@@ -103,7 +103,7 @@ router.delete('/:id', (req, res) => {
           res.status(404).json({ message: 'No category found with this id' });
           return;
         }
-        res.json(dbCategoryData);
+        res.json(CategoryData);
       })
       .catch(err => {
         console.log(err);
