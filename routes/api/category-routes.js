@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
     include: [
       {
         model: Product,
-        attributes: ['id', 'product_name']
+        attributes: ['product_name']
       }
 
     ]
@@ -44,7 +44,7 @@ router.get('/:id', (req, res) => {
         res.status(404).json({ message: 'No product found with this id' });
         return;
     }
-    res.json(CategorytData);
+    res.json(CategoryData);
 })
 .catch(err => {
     console.log(err);
@@ -55,7 +55,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   // create a new category
   Category.create({
-    title: req.body.title,
+    category_name: req.body.title,
 
   })
   .then(CategoryData => res.json(CategoryData))
