@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
     }
     ]
   })
-  .then(Tag => res.json(ProductTag))
+  .then(tagData => res.json(tagData))
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
@@ -33,12 +33,12 @@ router.get('/:id', (req, res) => {
       model: Product,
       attributes: ['id']
     }]
-  }) .then(ProductTag => {
-    if (!ProductTag) {
+  }) .then(tagData => {
+    if (!tagData) {
         res.status(404).json({ message: 'No tag found with this id' });
         return;
     }
-    res.json(ProductTag);
+    res.json(tagData);
 })
 .catch(err => {
     console.log(err);
@@ -53,7 +53,7 @@ router.post('/', (req, res) => {
   Tag.create({
     title: req.body.title
   })
-  .then(ProductTag => res.json(ProductTag))
+  .then(tagData => res.json(tagData))
   .catch(err => {
     console.log(err);
     res.status(500).json(err);
@@ -72,12 +72,12 @@ router.put('/:id', (req, res) => {
       }
     }
   )
-  .then(ProductTag => {
-    if (!ProductTag) {
+  .then(tagData => {
+    if (!tagData) {
       res.status(404).json({ message: 'No product tag found with this id' });
       return;
     }
-    res.json(ProductTag);
+    res.json(tagData);
   })
   .catch(err => {
     console.log(err);
@@ -96,12 +96,12 @@ router.delete('/:id', (req, res) => {
     }
 
   })
-  .then(ProductTag => {
-    if (!ProductTag) {
-      res.status(404).json({ message: 'No product tag found with this id' });
+  .then(tagData => {
+    if (!tagData) {
+      res.status(404).json({ message: 'No tag found with this id' });
       return;
     }
-    res.json(ProductTag);
+    res.json(tagData);
   })
   .catch(err => {
     console.log(err);

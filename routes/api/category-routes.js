@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 
     ]
   })
-  .then(ProductData => res.json(ProductData))
+  .then(CategoryData => res.json(CategoryData))
   .catch(err => {
       console.log(err);
       res.status(500).json(err);

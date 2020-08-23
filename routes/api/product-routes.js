@@ -10,12 +10,12 @@ router.get('/', (req, res) => {
   Product.findAll({
     attributes: ['id','product_name', 'price', 'stock'],
     include: [{
-      model: Category,
-      attributes: [ 'id']
+      model: 'category',
+      attributes: 'id'
     },
     {
-      model: Tag,
-      attributes: ['id']
+      model: 'tag',
+      attributes: 'id'
     }
     ]
   }).then(ProductData => res.json(ProductData))
@@ -36,8 +36,8 @@ router.get('/:id', (req, res) => {
     },
     attributes: ['id', 'product_name', 'price', 'stock'],
     include:[{
-      model: Category,
-      attributes: ['id']
+      model: 'category',
+      attributes: 'id'
     },
     {
       model: Tag,
