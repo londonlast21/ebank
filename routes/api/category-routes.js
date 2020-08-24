@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
   // find all categories
   // be sure to include its associated Products
   Category.findAll({
-   /*attributes: ['id', 'category_name']*/
+   include: [Product],
   })
   .then((CategoryData) =>{ 
     console.log("Inside category route");
@@ -27,6 +27,7 @@ router.get('/:id', (req, res) => {
     where: {
       id: req.params.id
     },
+    include: [Product]
    
   })
   .then(CategoryData => {
