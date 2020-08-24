@@ -7,9 +7,11 @@ router.get('/', (req, res) => {
   // find all categories
   // be sure to include its associated Products
   Category.findAll({
-   attributes: ['id', 'category_name']
+   /*attributes: ['id', 'category_name']*/
   })
-  .then((CategoryData) => res.json(CategoryData))
+  .then((CategoryData) =>{ 
+    console.log("Inside category route");
+    res.json(CategoryData)})
   .catch(err => {
 
       res.status(500).json(err);
@@ -43,7 +45,8 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   // create a new category
   Category.create({
-    category_name: req.body.title,
+    id: req.body.id,
+    category_name: req.body.category_name,
 
   })
   .then(CategoryData => res.json(CategoryData))
@@ -57,7 +60,8 @@ router.put('/:id', (req, res) => {
   // update a category by its `id` value
   Category.update(
     {
-      title: req.body.category_name
+      id: req.body.id,
+      category_name: req.body.category_name
     },
     {
       where: {

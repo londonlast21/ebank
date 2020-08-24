@@ -40,7 +40,7 @@ router.get('/:id', (req, res) => {
       res.status(500).json(err);
   });
 });
-
+//Strange. Let me join back. I'm closing this zoom room 
 
 // create new product
 router.post('/', (req, res) => {
@@ -58,8 +58,12 @@ router.post('/', (req, res) => {
       if (req.body.tagIds.length) {
         const productTagIdArr = req.body.tagIds.map((tag_id) => {
           return {
-            product_id: product.id,
-            tag_id,
+            id: req.body.id,
+            product_name: req.body.product_name,
+            price: req.body.price,
+            stock: req.body.stock,
+            category_id: req.body.category_id
+          
           };
         });
         return ProductTag.bulkCreate(productTagIdArr);

@@ -54,9 +54,10 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
   // update a tag's name by its `id` value
-  ProductTag.update(
+  Tag.update(
     {
-    tag_name: req.body.tag_name
+      id: req.body.id,
+      tag_name: req.body.tag_name
     },
     {
       where: {
@@ -82,7 +83,7 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   // delete on tag by its `id` value
-  ProductTag.destroy({
+  Tag.destroy({
     where: {
       id: req.params.id
     }
