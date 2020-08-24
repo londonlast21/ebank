@@ -63,7 +63,6 @@ router.post('/', (req, res) => {
             price: req.body.price,
             stock: req.body.stock,
             category_id: req.body.category_id
-          
           };
         });
         return ProductTag.bulkCreate(productTagIdArr);

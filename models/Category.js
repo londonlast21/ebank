@@ -19,13 +19,7 @@ Category.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    {// return products that are in this category
-      SELECT Product.product_name, Category.CategoryID
-      FROM Product
-      LEFT JOIN Category ON Product.ProductID = Category.ProductID,
-      ORDER BY Product.ProductID;
-      
-    }
+ 
   
     
     
